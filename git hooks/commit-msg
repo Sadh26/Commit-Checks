@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Your commit message
+MESSAGE=$(cat $1) 
+
+# The below is the format for how the commit message must start. Feel free to edit as your requirements.
+COMMITFORMAT="^(feat|fix|docs|style|refactor|test|chore|perf|other): +[a-z0-9._-]"
+
+if ! [[ "$MESSAGE" =~ $COMMITFORMAT ]]; then
+  echo "Your commit was rejected due to the commit message. Skipping..." 
+  echo ""
+  echo "Please use the following format:"
+  echo "feat: your text here --> feature example comment"
+  echo ""
+  exit 1
+fi
